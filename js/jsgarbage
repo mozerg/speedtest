@@ -1,0 +1,18 @@
+req.addEventListener("progress", function(event) {
+    if (event.lengthComputable) {
+        percentComplete = event.loaded / event.total;
+        // ...
+    } else {
+        console.log("Error: Cannot fetch file size.");
+    }
+}, false);
+// load responseText into a new script element
+req.addEventListener("load", function(event) {
+  alert(percentComplete+"Done !");
+}, false);
+
+function startTest(){
+req.open("GET", fileToDownload+"?"+Math.random());
+if (req.send()) return true;
+return false;
+}
